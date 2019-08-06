@@ -1,0 +1,15 @@
+{
+  "providerId": "Microsoft.Tools.ServiceModel.Svcutil",
+  "version": "2.0.0",
+  "options": {
+    "inputs": [
+      "http://www.sefaz.es.gov.br/wsSicopImportacao/WSSICOPImportacao.asmx?WSDL"
+    ],
+    "namespaceMappings": [
+      "*, SicopService"
+    ],
+    "outputFile": "Sicop.cs",
+    "targetFramework": "netstandard2.0",
+    "typeReuseMode": "All"
+  }
+}
