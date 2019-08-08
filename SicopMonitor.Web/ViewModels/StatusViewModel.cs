@@ -6,5 +6,6 @@ namespace SicopMonitor.Web.ViewModels
     {
         public string Mensagem { get; set; }    
         public DateTime DataHora { get; set; }
+        public double TempoRespostaSegundos { get; set; }
     }
 }

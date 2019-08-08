@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -22,9 +23,16 @@ namespace SicopMonitor.Web.Controllers
         public async Task<IActionResult> Index()
         {
             var cliente = new SicopClient(_configuration["UrlBase"].ToString(), _httpClient);
-            System.DateTime datahora = TimeZoneInfo.ConvertTime(
-                DateTime.Now, TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time"));
-            var status = new StatusViewModel { Mensagem = await cliente.AtualizarStatusAsync(), DataHora = datahora };
+            var cronometro = new Stopwatch();
+            cronometro.Start();
+            var resposta = await cliente.AtualizarStatusAsync();
+            cronometro.Stop();
+            var status = new StatusViewModel 
+            {
+                Mensagem = resposta,
+                DataHora = DateTime.Now,
+                TempoRespostaSegundos = cronometro.Elapsed.TotalSeconds
+            };
             return View(status);
         }
     }
