@@ -1,4 +1,5 @@
 ﻿@model SicopMonitor.Web.ViewModels.StatusViewModel
+@using System.Globalization;
 
 @{
     ViewData["Title"] = "Home Page";
@@ -7,5 +8,5 @@
 <div class="text-center">
     <p>Status</p>
     <h1 class="display-4">@Model.Mensagem</h1>
-    <p>@Model.DataHora.ToString()</p>
+    <p>@Model.DataHora.ToString(new CultureInfo("pt-BR"))</p>
 </div>
