@@ -1,4 +1,4 @@
-﻿@model string
+﻿@model SicopMonitor.Web.ViewModels.StatusViewModel
 
 @{
     ViewData["Title"] = "Home Page";
@@ -6,6 +6,6 @@
 
 <div class="text-center">
     <p>Status</p>
-    <h1 class="display-4">@Model</h1>
-    <p>@DateTime.Now.ToString()</p>
+    <h1 class="display-4">@Model.Mensagem</h1>
+    <p>@Model.DataHora.ToString()</p>
 </div>

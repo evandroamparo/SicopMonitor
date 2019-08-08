@@ -1,8 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Sicop.Client;
 using Sicop.Client.Http;
+using SicopMonitor.Web.ViewModels;
 
 namespace SicopMonitor.Web.Controllers
 {
@@ -20,7 +22,10 @@ namespace SicopMonitor.Web.Controllers
         public async Task<IActionResult> Index()
         {
             var cliente = new SicopClient(_configuration["UrlBase"].ToString(), _httpClient);
-            return View(model: await cliente.AtualizarStatusAsync());
+            System.DateTime datahora = TimeZoneInfo.ConvertTime(
+                DateTime.Now, TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time"));
+            var status = new StatusViewModel { Mensagem = await cliente.AtualizarStatusAsync(), DataHora = datahora };
+            return View(status);
         }
     }
 }
