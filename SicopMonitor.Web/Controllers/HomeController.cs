@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Globalization;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -21,6 +23,10 @@ namespace SicopMonitor.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
+            var cultura = new CultureInfo("pt-BR");
+            Thread.CurrentThread.CurrentCulture = cultura;
+            Thread.CurrentThread.CurrentUICulture = cultura;
+
             var cliente = new SicopClient(_configuration["UrlBase"].ToString(), _httpClient);
             System.DateTime datahora = TimeZoneInfo.ConvertTime(
                 DateTime.Now, TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time"));

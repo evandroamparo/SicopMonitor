@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore;
+﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 
 namespace SicopMonitor.Web
 {
@@ -15,7 +7,6 @@ namespace SicopMonitor.Web
     {
         public static void Main(string[] args)
         {
-            CultureInfo.CurrentUICulture = new CultureInfo("pt-BR");
             CreateWebHostBuilder(args).Build().Run();
         }
 
