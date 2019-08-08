@@ -15,7 +15,7 @@ namespace SicopMonitor.Web
     {
         public static void Main(string[] args)
         {
-            CultureInfo.CurrentCulture = new CultureInfo("pt-BR");
+            CultureInfo.CurrentUICulture = new CultureInfo("pt-BR");
             CreateWebHostBuilder(args).Build().Run();
         }
 
