@@ -27,13 +27,11 @@ namespace SicopMonitor.Web.Controllers
             cronometro.Start();
             var resposta = await cliente.AtualizarStatusAsync();
             cronometro.Stop();
-            var status = new StatusViewModel
-            {
-                Mensagem = resposta,
-                DataHora = TimeZoneInfo.ConvertTime(
+            var status = new StatusViewModel(
+                mensagem: resposta,
+                dataHora: TimeZoneInfo.ConvertTime(
                     DateTime.Now, TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time")),
-                TempoRespostaSegundos = cronometro.Elapsed.TotalSeconds
-            };
+                tempoRespostaSegundos: cronometro.Elapsed.TotalSeconds);
             return View(status);
         }
     }
