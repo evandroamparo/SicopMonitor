@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Sicop.Client;
 using Sicop.Client.Http;
 using SicopMonitor.Web.ViewModels;
+using TimeZoneConverter;
 
 namespace SicopMonitor.Web.Controllers
 {
@@ -30,7 +31,7 @@ namespace SicopMonitor.Web.Controllers
             var status = new StatusViewModel(
                 mensagem: resposta,
                 dataHora: TimeZoneInfo.ConvertTime(
-                    DateTime.Now, TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time")),
+                    DateTime.Now, TZConvert.GetTimeZoneInfo("E. South America Standard Time")),
                 tempoRespostaSegundos: cronometro.Elapsed.TotalSeconds);
             return View(status);
         }
