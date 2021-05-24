@@ -9,7 +9,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/SicopMonitor.Web/bin/Debug/netcoreapp2.2/SicopMonitor.Web.dll",
+            "program": "${workspaceFolder}/SicopMonitor.Web/bin/Debug/netcoreapp3.1/SicopMonitor.Web.dll",
             "args": [],
             "cwd": "${workspaceFolder}/SicopMonitor.Web",
             "stopAtEntry": false,
